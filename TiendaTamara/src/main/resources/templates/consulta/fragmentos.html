@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<section th:fragment="filtros" class="text-center mt-4">
+    <h3>Consulta ampliada de productos</h3>
+    <p>Total de productos: <strong th:text="${totalProductos}"></strong></p>
+</section>
+
+<section th:fragment="tarjetas" class="contenedor-tarjetas">
+    <div th:each="p : ${productos}" class="tarjeta">
+        <img th:src="@{${p.rutaImagen}}" alt="Producto"/>
+        <h4 th:text="${p.descripcion}"></h4>
+        <p>Precio: ₡<span th:text="${p.precio}"></span></p>
+        <small th:text="${p.categoria.descripcion}"></small>
+    </div>
+</section>
+</body>
+</html>
