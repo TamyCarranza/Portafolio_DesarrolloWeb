@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reparaciones - Tienda Tamara</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<h1>Reparaciones de Computadoras</h1>
+<img th:src="@{/img/reparaciones.jpg}" alt="Reparaciones" class="banner"/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Equipo</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Costo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${reparaciones}">
+        <td th:text="${r.equipo}"></td>
+        <td th:text="${r.descripcion}"></td>
+        <td th:text="${r.estado}"></td>
+        <td th:text="${r.costo}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/">Volver al inicio</a>
+</body>
+</html>

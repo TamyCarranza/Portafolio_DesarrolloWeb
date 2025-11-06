@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ventas - Tienda Tamara</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<h1>Registro de Ventas</h1>
+<img th:src="@{/img/ventas.jpg}" alt="Ventas" class="banner"/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Producto</th>
+        <th>Cliente</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="venta : ${ventas}">
+        <td th:text="${venta.producto}"></td>
+        <td th:text="${venta.cliente}"></td>
+        <td th:text="${venta.monto}"></td>
+        <td th:text="${venta.fecha}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/">Volver al inicio</a>
+</body>
+</html>

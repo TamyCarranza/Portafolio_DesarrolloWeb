@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Su tienda en línea</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+    <header class="navbar">🛠️ Su tienda en línea</header>
+
+    <main>
+        <!-- SECCIÓN DE TARJETAS DE CONSULTAS -->
+        <section class="contenedor">
+
+            <!-- Consulta Ampliada -->
+            <div class="card azul">
+                <h3>Consultas Ampliadas</h3>
+                <form method="post" th:action="@{/consulta/filtrar}">
+                    <input type="hidden" name="tipo" value="venta">
+                    <label>Precio inferior:</label>
+                    <input type="number" name="minimo" required>
+                    <label>Precio superior:</label>
+                    <input type="number" name="maximo" required>
+                    <button type="submit" class="btn azul">🔍 Consultar Ampliada</button>
+                </form>
+            </div>
+
+            <!-- Consulta JPQL -->
+            <div class="card amarilla">
+                <h3>Consultas JPQL</h3>
+                <form method="post" th:action="@{/consulta/filtrar}">
+                    <input type="hidden" name="tipo" value="reparacion">
+                    <label>Precio inferior:</label>
+                    <input type="number" name="minimo" required>
+                    <label>Precio superior:</label>
+                    <input type="number" name="maximo" required>
+                    <button type="submit" class="btn amarilla">🔍 Consultar JPQL</button>
+                </form>
+            </div>
+
+            <!-- Consulta Nativa -->
+            <div class="card verde">
+                <h3>Consultas Nativas</h3>
+                <form method="post" th:action="@{/consulta/filtrar}">
+                    <input type="hidden" name="tipo" value="venta">
+                    <label>Precio inferior:</label>
+                    <input type="number" name="minimo" required>
+                    <label>Precio superior:</label>
+                    <input type="number" name="maximo" required>
+                    <button type="submit" class="btn verde">🔍 Consultar Nativa</button>
+                </form>
+            </div>
+
+            <!-- Consulta de Productos -->
+            <div class="card roja">
+                <h3>Consulta de Productos</h3>
+                <form method="post" th:action="@{/consulta/filtrar}">
+                    <input type="hidden" name="tipo" value="producto">
+                    <label>Precio inferior:</label>
+                    <input type="number" name="minimo" required>
+                    <label>Precio superior:</label>
+                    <input type="number" name="maximo" required>
+                    <button type="submit" class="btn roja">🔍 Consultar Productos</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE TABLAS -->
+        <section>
+            <!-- Tabla de Ventas -->
+            <h2>📊 Catálogo de Ventas</h2>
+            <table>
+                <tr><th>Producto</th><th>Cliente</th><th>Monto</th><th>Fecha</th></tr>
+                <tr th:each="v : ${ventas}">
+                    <td th:text="${v.producto}"></td>
+                    <td th:text="${v.cliente}"></td>
+                    <td th:text="${v.monto}"></td>
+                    <td th:text="${v.fecha}"></td>
+                </tr>
+            </table>
+
+            <!-- Tabla de Reparaciones -->
+            <h2>🧰 Reparaciones</h2>
+            <table>
+                <tr><th>Equipo</th><th>Descripción</th><th>Costo</th><th>Estado</th></tr>
+                <tr th:each="r : ${reparaciones}">
+                    <td th:text="${r.equipo}"></td>
+                    <td th:text="${r.descripcion}"></td>
+                    <td th:text="${r.costo}"></td>
+                    <td th:text="${r.estado}"></td>
+                </tr>
+            </table>
+
+            <!-- Tabla de Productos -->
+            <h2>🖥️ Catálogo de Productos</h2>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                </tr>
+                <tr th:each="p : ${productos}">
+                    <td th:text="${p.nombre}"></td>
+                    <td th:text="${p.categoria}"></td>
+                    <td th:text="${p.precio}"></td>
+                    <td th:text="${p.stock}"></td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <footer>© Tienda Tamara - Costa Rica</footer>
+</body>
+</html>
